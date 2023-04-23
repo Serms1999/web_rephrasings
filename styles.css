@@ -1,0 +1,26 @@
+body {
+    font-weight: 300;
+    font-family: 'Poppins', 'sans-serif';
+}
+
+p {
+    margin: 4px 0;
+}
+
+.keyword {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.answer {
+    color: red;
+    font-weight: 400;
+}
+
+.rephrasing-element {
+    margin-bottom: 50px;
+}
+
+.show-answer {
+    margin-left: 15px;
+}
