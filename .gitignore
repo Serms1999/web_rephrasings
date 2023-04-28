@@ -7,3 +7,7 @@
 
 # Remove .env file
 server/src/config/.env
+
+# Remove TypeScript compiled filed
+server/src/dist/
+
