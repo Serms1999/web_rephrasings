@@ -1,0 +1,70 @@
+body {
+    font-family: 'Poppins', 'sans-serif';
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
+    font-size: 20px;
+    background-color: #f7f6f6;
+}
+
+.sentence {
+    border: 1px solid;
+    width: fit-content;
+    height: 100px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.sentence-id {
+    margin-left: 100px;
+    font-weight: bold;
+}
+
+.sentence-text {
+    display: inline;
+    margin-right: 20px;
+}
+
+.edit-button, .remove-button {
+    padding: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.edit-button {
+    background-color: #2596be;
+}
+
+.remove-button {
+    background-color: #ce5347;
+    margin-right: 20px;
+}
+
+.sentence-id, .sentence-text, .edit-button, .remove-button {
+    margin-top: 20px;
+}
+
+.add-new-button {
+    width: 183px;
+    height: 73px;
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: #58a942;
+}
+
+.add-text {
+    font-family: 'Poppins', 'sans-serif';
+    margin-left: 10px;
+    font-size: 20px;
+    color: white;
+    font-weight: 500;
+}
+
+#prueba {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
