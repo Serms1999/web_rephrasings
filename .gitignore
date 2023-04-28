@@ -1,3 +1,9 @@
 # Remove IDE config
 .idea/
 .vscode/
+
+# Remove node depencies
+*/node_modules
+
+# Remove .env file
+server/src/config/.env
