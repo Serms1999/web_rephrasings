@@ -9,5 +9,4 @@
 server/src/config/.env
 
 # Remove TypeScript compiled filed
-server/src/dist/
-
+server/src/dist
