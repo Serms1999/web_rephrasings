@@ -107,7 +107,7 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "files": [
-    "src/app.ts",
-    "src/sentences/sentences.router.ts"
+    "src/server.ts",
+    "src/routes/sentences.router.ts"
   ]
 }
