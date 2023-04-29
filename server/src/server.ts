@@ -1,17 +1,18 @@
 import express, {Express, Request, Response, Router} from 'express';
-import dotenv from 'dotenv';
-dotenv.config({path: 'src/config/.env'});
-const env : NodeJS.ProcessEnv = process.env;
+import { setupMiddlewares } from './middlewares/middlewares';
+import config from './config/config';
 
 const server: Express = express();
-const port : string | undefined = env.PORT;
+
+// Middlewares
+setupMiddlewares(server);
 
 // Routes
 const routes: Router = require('./routes/sentences.router').router;
-server.use('/', routes);
+server.use('/sentences', routes);
 
-server.listen(port, () : void => {
-    console.log(`[server]: Server is running at http://localhost:${port}`);
+server.listen(config.server.port, () : void => {
+    console.log(`[server]: Server is running at http://${config.server.hostname}:${config.server.port}`);
 });
 
 exports.app = server;
