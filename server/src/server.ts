@@ -11,7 +11,7 @@ setupMiddlewares(server);
 const routes: Router = require('./routes/sentences.router').router;
 server.use('/sentences', routes);
 
-server.listen(config.server.port, () : void => {
+server.listen(config.server.port, (): void => {
     console.log(`[server]: Server is running at http://${config.server.hostname}:${config.server.port}`);
 });
 

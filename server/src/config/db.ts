@@ -1,5 +1,6 @@
 import mysql from 'mysql2/promise';
 import config from "./config";
+import {FieldPacket, RowDataPacket} from "mysql2";
 
 const params = {
     user: config.db.user,
@@ -8,29 +9,17 @@ const params = {
     database: config.db.database
 };
 
-const Connect = async () : Promise<mysql.Connection> => {
-    return new Promise<mysql.Connection>((resolve, reject) => {
-        mysql.createConnection(params)
-            .then((connection) => {
-                resolve(connection);
-            })
-            .catch(err => {
-                reject(err);
-                return;
-            });
+const Connect = async (): Promise<mysql.Connection> => {
+    return new Promise<mysql.Connection>(async (resolve, reject) => {
+        const connection = await mysql.createConnection(params);
+        resolve(connection);
     });
 }
 
-const Query = async (connection: mysql.Connection, query: string) => {
-    return new Promise((resolve, reject) => {
-        connection.query(query)
-            .then(result => {
-                resolve(result);
-            })
-            .catch(err => {
-                reject(err);
-                return;
-            });
+const Query = async (connection: mysql.Connection, query: string): Promise<[RowDataPacket[], FieldPacket[]]> => {
+    return new Promise(async (resolve, reject) => {
+        const result: [RowDataPacket[], FieldPacket[]] = await connection.query(query);
+        resolve(result);
     });
 }
 
