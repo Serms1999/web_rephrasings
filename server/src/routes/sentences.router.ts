@@ -1,9 +1,10 @@
 import { Router } from 'express';
 const sentencesRouter : Router = Router();
 
-import { getSentences } from "../handlers/sentences.handler";
+import { addSentence, getSentences } from '../handlers/sentences.handler';
 
-sentencesRouter.route('/get/sentences')
+sentencesRouter.route('/')
     .get(getSentences)
+    .post(addSentence);
 
-exports.router = sentencesRouter;
+export { sentencesRouter };

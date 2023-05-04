@@ -109,6 +109,13 @@
   "files": [
     "src/server.ts",
     "src/routes/sentences.router.ts",
-    "src/handlers/sentences.handler.ts"
+    "src/handlers/sentences.handler.ts",
+    "src/middlewares/middlewares.ts",
+    "src/controllers/sentences.controller.ts",
+    "src/interfaces/sentences.interface.ts",
+    "src/tools/sentences.tool.ts",
+    "src/config/config.ts",
+    "src/config/db.ts",
+    "src/test/sentences.test.ts"
   ]
 }

@@ -10,17 +10,11 @@ const params = {
 };
 
 const Connect = async (): Promise<mysql.Connection> => {
-    return new Promise<mysql.Connection>(async (resolve, reject) => {
-        const connection = await mysql.createConnection(params);
-        resolve(connection);
-    });
+    return mysql.createConnection(params);
 }
 
-const Query = async (connection: mysql.Connection, query: string): Promise<[RowDataPacket[], FieldPacket[]]> => {
-    return new Promise(async (resolve, reject) => {
-        const result: [RowDataPacket[], FieldPacket[]] = await connection.query(query);
-        resolve(result);
-    });
+const Query = async (connection: mysql.Connection, query: string, values?: string[]): Promise<[RowDataPacket[], FieldPacket[]]> => {
+    return connection.query(query, values);
 }
 
 export { Connect, Query };
