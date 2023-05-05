@@ -1,4 +1,4 @@
-const main = document.getElementsByTagName("main")[0];
+const exam = document.getElementsByTagName("exam")[0];
 const answerButtons = Array.from(document.getElementsByClassName("show-answer"));
 const buttonPressed = new Array(answerButtons.length).fill(false);
 
@@ -29,7 +29,7 @@ const createRephrasingElement = (original, word, start, end) => {
 
     showAnswerListener(answerButton);
 
-    main.appendChild(template);
+    exam.appendChild(template);
 }
 
 const showAnswerListener = button => {
