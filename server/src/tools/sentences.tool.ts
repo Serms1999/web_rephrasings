@@ -10,7 +10,9 @@ const sentencesEqual = (sentence1: ISentence, sentence2: ISentence): boolean => 
 
 const checkSentenceOnlyValidChars = (sentence: ISentence): boolean => {
     const pattern = /^([a-zA-Z0-9]+[?!.]? *)+$/;
-    for (const value of Object.values(sentence)) {
+    const values: string[] = Object.values(sentence);
+    values.shift();
+    for (const value of values) {
         if (!value.match(pattern)) {
             return false;
         }

@@ -115,7 +115,6 @@
     "src/interfaces/sentences.interface.ts",
     "src/tools/sentences.tool.ts",
     "src/config/config.ts",
-    "src/config/db.ts",
-    "src/test/sentences.test.ts"
+    "src/config/db.ts"
   ]
 }

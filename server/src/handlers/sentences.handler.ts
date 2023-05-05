@@ -22,8 +22,6 @@ const addSentence = async (req: Request, res: Response) => {
     }
 
     const result = await addDBSentence(newSentence);
-
-    console.log('Insertado');
     res.status(201).json({
         insertId: result.insertId
     });
