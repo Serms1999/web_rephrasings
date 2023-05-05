@@ -11,7 +11,7 @@ const getDBSentences = async (num?: number) => {
         query += ` LIMIT ${num}`;
     }
 
-    const connection: mysql.Connection = await Connect();
+    const connection = await Connect();
     const result = await Query(connection, query);
     return <ISentence[]>result[0];
 }
@@ -21,7 +21,7 @@ const addDBSentence = async (newSentence: ISentence) => {
         'INSERT INTO question (sentence, keyword, sentence_start, sentence_end, answer)' +
         ' VALUES (?, ?, ?, ?, ?)';
 
-    const connection: mysql.Connection = await Connect();
+    const connection = await Connect();
     const result = await Query(connection, query, [
         newSentence.sentence,
         newSentence.keyword,
@@ -32,4 +32,18 @@ const addDBSentence = async (newSentence: ISentence) => {
     return <RowDataPacket>result[0];
 }
 
-export { getDBSentences, addDBSentence };
+const removeDBAllSentences = async () => {
+    const query = 'DELETE FROM question';
+
+    const connection = await Connect();
+    await Query(connection, query);
+}
+
+const removeDBSentence = async (id: number)=> {
+    const query = 'DELETE FROM question WHERE id=?';
+
+    const connection = await Connect();
+    await Query(connection, query, [id]);
+}
+
+export { getDBSentences, addDBSentence, removeDBAllSentences, removeDBSentence };

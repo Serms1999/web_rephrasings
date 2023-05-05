@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getDBSentences, addDBSentence } from '../controllers/sentences.controller';
+import {getDBSentences, addDBSentence, removeDBSentence} from '../controllers/sentences.controller';
 import { checkSentenceOnlyValidChars } from '../tools/sentences.tool';
 import { ISentence } from '../interfaces/sentences.interface';
 
@@ -23,9 +23,22 @@ const addSentence = async (req: Request, res: Response) => {
 
     const result = await addDBSentence(newSentence);
 
-    res.status(200).json(
-        result.insertId
-    );
+    console.log('Insertado');
+    res.status(201).json({
+        insertId: result.insertId
+    });
 }
 
-export { getSentences, addSentence }
+const removeSentence = async (req: Request, res: Response) => {
+    let id: number;
+    if (isNaN(id = parseInt(req.params.id))) {
+        res.status(400).json({
+            err: 'Id bad formatted'
+        });
+    } else {
+        await removeDBSentence(id);
+        res.status(204).send();
+    }
+}
+
+export { getSentences, addSentence, removeSentence }

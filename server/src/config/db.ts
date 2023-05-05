@@ -13,7 +13,7 @@ const Connect = async (): Promise<mysql.Connection> => {
     return mysql.createConnection(params);
 }
 
-const Query = async (connection: mysql.Connection, query: string, values?: string[]): Promise<[RowDataPacket[], FieldPacket[]]> => {
+const Query = async (connection: mysql.Connection, query: string, values?: (string | number)[]): Promise<[RowDataPacket[], FieldPacket[]]> => {
     return connection.query(query, values);
 }
 
