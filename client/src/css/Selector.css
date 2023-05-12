@@ -1,0 +1,14 @@
+.selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    width: 280px;
+    height: 280px;
+    background-color: #2596be;
+    font-size: 40px;
+}
+
+.selector:hover {
+    background-color: #2385af;
+}
