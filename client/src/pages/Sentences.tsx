@@ -1,7 +1,7 @@
-import SentenceDisplay from './SentenceDisplay.tsx';
+import SentenceDisplay from '../components/SentenceDisplay.tsx';
 import '../css/SentencesPage.css';
 
-const SentencesPage = () => {
+const Sentences = () => {
     return (
         <>
             <SentenceDisplay id={1} text={'This is an example sentence to illustrate the design.'} />
@@ -9,4 +9,4 @@ const SentencesPage = () => {
     )
 }
 
-export default SentencesPage;
+export default Sentences;

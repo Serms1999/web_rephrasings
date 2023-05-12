@@ -1,17 +1,29 @@
 import '../css/App.css';
-//import Selector from "./Selector.tsx";
-import SentencesPage from "./SentencesPage.tsx";
-//import { faList, faListCheck } from '@fortawesome/free-solid-svg-icons';
+import Home from "../pages/Home.tsx";
+import Sentences from "../pages/Sentences.tsx";
+import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
+
 
 const App = () => {
     return (
-        /*<main>
-            <div className="selectors">
-                <Selector iconSource={faList} text={"Sentences"} />
-                <Selector iconSource={faListCheck} text={"Exam"} />
-            </div>
-        </main>*/
-        <SentencesPage />
+        <BrowserRouter>
+            <header>
+                <Link to='/sentences'>
+                    Sentences
+                </Link>
+                <Link to='/'>
+                    Home
+                </Link>
+            </header>
+            <Switch>
+                <Route path='/sentences'>
+                    <Sentences />
+                </Route>
+                <Route path='/'>
+                    <Home />
+                </Route>
+            </Switch>
+        </BrowserRouter>
     )
 }
 
