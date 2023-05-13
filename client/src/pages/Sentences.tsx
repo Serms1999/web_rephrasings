@@ -3,6 +3,7 @@ import { ISentence } from '../interfaces/sentence.ts';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import '../css/SentencesPage.css';
+import EditSentence from "../components/EditSentence.tsx";
 
 const generateSentence = (num: number): ISentence => {
   return {
@@ -20,20 +21,27 @@ const currentSentences: ISentence[] = [
     generateSentence(31), generateSentence(32), generateSentence(33), generateSentence(34)
 ];
 
+const handleNewSentence = () => {
+    console.log('Adding new sentence');
+}
+
 const Sentences = () => {
     return (
-        <article className="sentencesPage">
-            <section className="sentences">
-            {
-                currentSentences.map((sentence, index) => {
-                    return <SentenceDisplay key={sentence.id} num={index + 1} id={sentence.id} text={sentence.sentence} />;
-                })
-            }
-            </section>
-            <button className='addSentence'>
-                <FontAwesomeIcon icon={faPlus} /> Add new
-            </button>
-        </article>
+        <>
+            <article className="sentencesPage">
+                <section className="sentences">
+                {
+                    currentSentences.map((sentence, index) => {
+                        return <SentenceDisplay key={sentence.id} num={index + 1} id={sentence.id} text={sentence.sentence} />;
+                    })
+                }
+                </section>
+                <button className='addSentence' onClick={handleNewSentence}>
+                    <FontAwesomeIcon icon={faPlus} /> Add new
+                </button>
+            </article>
+            <EditSentence />
+        </>
     )
 }
 
