@@ -1,0 +1,21 @@
+.sentencesPage {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 20px;
+    margin: 5vh 0;
+    justify-items: center;
+}
+
+.sentences {
+    display: grid;
+    grid-row-gap: 10px;
+}
+
+.addSentence {
+    width: fit-content;
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: #58a942;
+    color: white;
+    height: 73px;
+}
