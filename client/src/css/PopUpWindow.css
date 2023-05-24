@@ -1,0 +1,38 @@
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-window {
+    background-color: #F7F6F6;
+    border-radius: 20px;
+    border: 2px solid black;
+    min-width: 30vw;
+    min-height: 25vh;
+}
+
+.popup-window-buttons {
+    margin: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup-window-buttons input {
+    background-color: inherit;
+    border: 0;
+    font-size: 1.5rem;
+    color: #2596be;
+    cursor: pointer;
+}
+
+.popup-window-buttons input:hover {
+    background-color: #e0dddd;
+    border-radius: 5px;
+}

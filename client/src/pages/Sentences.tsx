@@ -4,6 +4,14 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import '../css/SentencesPage.css';
 import EditSentence from "../components/EditSentence.tsx";
+import PopUpWindow from "../components/PopUpWindow.tsx";
+import {useState} from "react";
+
+const POPUP_OPTIONS = {
+    add: <>Adding</>,
+    edit: <EditSentence />,
+    remove: <>Deleting</>
+}
 
 const generateSentence = (num: number): ISentence => {
   return {
@@ -26,21 +34,33 @@ const handleNewSentence = () => {
 }
 
 const Sentences = () => {
+    const [showPopUpWindow, setShowPopUpWindow] = useState(false);
+    const [currentPopUpWindow, setPopUpWindow] = useState(POPUP_OPTIONS.add);
+
     return (
         <>
             <article className="sentencesPage">
                 <section className="sentences">
                 {
                     currentSentences.map((sentence, index) => {
-                        return <SentenceDisplay key={sentence.id} num={index + 1} id={sentence.id} text={sentence.sentence} />;
+                        return <SentenceDisplay key={sentence.id} num={index + 1} id={sentence.id}
+                                                popUpOptions={POPUP_OPTIONS} text={sentence.sentence}
+                                                setPopUpWindow = {setPopUpWindow}
+                                                switchShowWindow={setShowPopUpWindow} />;
                     })
                 }
                 </section>
-                <button className='addSentence' onClick={handleNewSentence}>
+                <button className='addSentence' onClick={() => {
+                    setShowPopUpWindow(true);
+                    setPopUpWindow(POPUP_OPTIONS.add);
+                    handleNewSentence();
+                }}>
                     <FontAwesomeIcon icon={faPlus} /> Add new
                 </button>
             </article>
-            <EditSentence />
+            <PopUpWindow showWindow={showPopUpWindow} switchShowWindow={setShowPopUpWindow}>
+                { currentPopUpWindow }
+            </PopUpWindow>
         </>
     )
 }
