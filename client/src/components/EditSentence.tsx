@@ -10,23 +10,23 @@ const EditSentence = ({ currentValues }: IEditSentenceProps) => {
                        defaultValue={currentValues?.sentence} required/>
             </div>
             <div className="formItem">
-                <label htmlFor="GET-sentence">Keyword:</label>
-                <input id="GET-keyword" type="text" name="sentence"
+                <label htmlFor="GET-keyword">Keyword:</label>
+                <input id="GET-keyword" type="text" name="keyword"
                        defaultValue={currentValues?.keyword} required/>
             </div>
             <div className="formItem">
                 <label htmlFor="GET-start">Start of the new sentence:</label>
-                <input id="GET-start" type="text" name="sentence"
+                <input id="GET-start" type="text" name="start"
                        defaultValue={currentValues?.sentence_start} required/>
             </div>
             <div className="formItem">
                 <label htmlFor="GET-answer">Correct answer:</label>
-                <input id="GET-answer" type="text" name="sentence"
+                <input id="GET-answer" type="text" name="answer"
                        defaultValue={currentValues?.sentence_end} required/>
             </div>
             <div className="formItem">
                 <label htmlFor="GET-end">End of the new sentence:</label>
-                <input id="GET-end" type="text" name="sentence"
+                <input id="GET-end" type="text" name="end"
                        defaultValue={currentValues?.answer} required/>
             </div>
         </div>

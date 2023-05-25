@@ -27,6 +27,11 @@ const handleNewSentence = () => {
     console.log('Adding new sentence');
 }
 
+const modifySentence = (id: number, newSentence: ISentence) => {
+    const index = currentSentences.findIndex(s => s.id === id);
+    currentSentences[index] = newSentence;
+}
+
 const Sentences = () => {
     const [showPopUpWindow, setShowPopUpWindow] = useState(false);
     const [currentPopUpWindow, setPopUpWindow] = useState(<EditSentence />);
