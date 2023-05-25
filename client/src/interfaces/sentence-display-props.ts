@@ -1,10 +1,10 @@
 import React, {ReactElement} from "react";
+import { ISentence } from "./sentence.ts";
 
 export interface ISentenceDisplayProps {
     num: number,
     id: number,
-    text: string,
-    popUpOptions: {add: ReactElement, edit: ReactElement, remove: ReactElement},
+    sentence: ISentence,
     setPopUpWindow: React.Dispatch<React.SetStateAction<ReactElement>>,
     switchShowWindow: React.Dispatch<React.SetStateAction<boolean>>
 }

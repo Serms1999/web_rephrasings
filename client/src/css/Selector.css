@@ -6,7 +6,8 @@
     width: 17vw;
     height: 17vw;
     background-color: #2596be;
-    font-size: 40px;
+    font-size: 3rem;
+    padding-top: 2.5vw;
 }
 
 .selector:hover {

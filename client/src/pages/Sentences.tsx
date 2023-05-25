@@ -7,12 +7,6 @@ import EditSentence from "../components/EditSentence.tsx";
 import PopUpWindow from "../components/PopUpWindow.tsx";
 import {useState} from "react";
 
-const POPUP_OPTIONS = {
-    add: <>Adding</>,
-    edit: <EditSentence />,
-    remove: <>Deleting</>
-}
-
 const generateSentence = (num: number): ISentence => {
   return {
       id: num,
@@ -35,7 +29,7 @@ const handleNewSentence = () => {
 
 const Sentences = () => {
     const [showPopUpWindow, setShowPopUpWindow] = useState(false);
-    const [currentPopUpWindow, setPopUpWindow] = useState(POPUP_OPTIONS.add);
+    const [currentPopUpWindow, setPopUpWindow] = useState(<EditSentence />);
 
     return (
         <>
@@ -44,7 +38,7 @@ const Sentences = () => {
                 {
                     currentSentences.map((sentence, index) => {
                         return <SentenceDisplay key={sentence.id} num={index + 1} id={sentence.id}
-                                                popUpOptions={POPUP_OPTIONS} text={sentence.sentence}
+                                                sentence={sentence}
                                                 setPopUpWindow = {setPopUpWindow}
                                                 switchShowWindow={setShowPopUpWindow} />;
                     })
@@ -52,7 +46,7 @@ const Sentences = () => {
                 </section>
                 <button className='addSentence' onClick={() => {
                     setShowPopUpWindow(true);
-                    setPopUpWindow(POPUP_OPTIONS.add);
+                    setPopUpWindow(<EditSentence />);
                     handleNewSentence();
                 }}>
                     <FontAwesomeIcon icon={faPlus} /> Add new
