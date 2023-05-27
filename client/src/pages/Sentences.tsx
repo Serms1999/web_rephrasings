@@ -6,22 +6,9 @@ import '../css/SentencesPage.css';
 import EditSentence from "../components/EditSentence.tsx";
 import PopUpWindow from "../components/PopUpWindow.tsx";
 import {useState} from "react";
+import {getAPISentences} from "../api/api.ts";
 
-const generateSentence = (num: number): ISentence => {
-  return {
-      id: num,
-      sentence: `This is an example sentence to illustrate the design. ${num}`,
-      keyword: `keyword${num}`,
-      sentence_start: `start${num}`,
-      sentence_end: `end${num}`,
-      answer: `answer${num}`
-  }
-}
-
-const currentSentences: ISentence[] = [
-    generateSentence(27), generateSentence(28), generateSentence(29), generateSentence(30),
-    generateSentence(31), generateSentence(32), generateSentence(33), generateSentence(34)
-];
+const currentSentences: ISentence[] = await getAPISentences();
 
 const handleNewSentence = () => {
     console.log('Adding new sentence');
