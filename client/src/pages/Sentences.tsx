@@ -6,17 +6,24 @@ import '../css/SentencesPage.css';
 import EditSentence from "../components/EditSentence.tsx";
 import PopUpWindow from "../components/PopUpWindow.tsx";
 import {useState} from "react";
-import {getAPISentences} from "../api/api.ts";
+import {getAPISentences, postAPISentence} from "../api/api.ts";
 
-const currentSentences: ISentence[] = await getAPISentences();
-
-const handleNewSentence = () => {
-    console.log('Adding new sentence');
-}
+const apiSentences = await getAPISentences();
 
 const Sentences = () => {
     const [showPopUpWindow, setShowPopUpWindow] = useState(false);
     const [currentPopUpWindow, setPopUpWindow] = useState(<EditSentence />);
+    const [currentSentences, updateSentences] = useState(apiSentences);
+
+    const handleNewSentence = async (newSentence: ISentence) => {
+        console.log('Adding new sentence');
+        console.log(newSentence);
+
+        const sentencesCopy = [...currentSentences];
+        newSentence.id = await postAPISentence(newSentence);
+        sentencesCopy.push(newSentence);
+        updateSentences(sentencesCopy);
+    }
 
     return (
         <>
@@ -34,12 +41,11 @@ const Sentences = () => {
                 <button className='addSentence' onClick={() => {
                     setShowPopUpWindow(true);
                     setPopUpWindow(<EditSentence />);
-                    handleNewSentence();
                 }}>
                     <FontAwesomeIcon icon={faPlus} /> Add new
                 </button>
             </article>
-            <PopUpWindow showWindow={showPopUpWindow} switchShowWindow={setShowPopUpWindow}>
+            <PopUpWindow showWindow={showPopUpWindow} switchShowWindow={setShowPopUpWindow} handler={handleNewSentence}>
                 { currentPopUpWindow }
             </PopUpWindow>
         </>
