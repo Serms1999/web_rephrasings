@@ -1,35 +1,22 @@
-import '../css/EditSentence.css';
-import {IEditSentenceProps} from "../interfaces/edit-sentence-props.ts";
+import {ISentence} from "../interfaces/ISentence.ts";
+import {putAPIEditSentence} from "../api/api.ts";
+import SentenceForm from "./SentenceForm.tsx";
+import {EditSentenceProps} from "../interfaces/EditSentenceProps.ts";
 
-const EditSentence = ({ currentValues }: IEditSentenceProps) => {
+const EditSentence = ({ currentValues, currentSentences, updateSentences, setShowPopUp }: EditSentenceProps) => {
+    const handleEditSentence = async (newSentence: ISentence) => {
+        let sentencesCopy = [...currentSentences];
+        const index = sentencesCopy.indexOf(currentValues);
+        sentencesCopy[index] = newSentence;
+        updateSentences(sentencesCopy);
+        await putAPIEditSentence(newSentence);
+        setShowPopUp(false);
+    }
+
     return (
-        <div className="new-sentence-inputs">
-            <div className="formItem">
-                <label htmlFor="GET-sentence">Original sentence:</label>
-                <input id="GET-sentence" type="text" name="sentence"
-                       defaultValue={currentValues?.sentence} required/>
-            </div>
-            <div className="formItem">
-                <label htmlFor="GET-keyword">Keyword:</label>
-                <input id="GET-keyword" type="text" name="keyword"
-                       defaultValue={currentValues?.keyword} required/>
-            </div>
-            <div className="formItem">
-                <label htmlFor="GET-start">Start of the new sentence:</label>
-                <input id="GET-start" type="text" name="start"
-                       defaultValue={currentValues?.sentence_start} required/>
-            </div>
-            <div className="formItem">
-                <label htmlFor="GET-answer">Correct answer:</label>
-                <input id="GET-answer" type="text" name="answer"
-                       defaultValue={currentValues?.sentence_end} required/>
-            </div>
-            <div className="formItem">
-                <label htmlFor="GET-end">End of the new sentence:</label>
-                <input id="GET-end" type="text" name="end"
-                       defaultValue={currentValues?.answer} required/>
-            </div>
-        </div>
+        <>
+            <SentenceForm currentValues={currentValues} setShowPopUp={setShowPopUp} handler={handleEditSentence}/>
+        </>
     )
 }
 

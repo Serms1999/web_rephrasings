@@ -1,12 +1,33 @@
+import {IRemoveSentenceProps} from "../interfaces/RemoveSentenceProps.ts";
 import "../css/RemoveSentence.css";
-import {IRemoveSentenceProps} from "../interfaces/remove-sentence-props.ts";
+import {ISentence} from "../interfaces/ISentence.ts";
+import {removeAPISentence} from "../api/api.ts";
 
-const RemoveSentence = ({ children }: IRemoveSentenceProps) => {
+const RemoveSentence = ({ num, sentence, setShowPopUp, currentSentences, updateSentences }: IRemoveSentenceProps) => {
+
+    const handleRemoveSentence = async () => {
+        const sentencesCopy: ISentence[] = [...currentSentences].filter(s => s.id !== sentence.id);
+        updateSentences(sentencesCopy);
+        await removeAPISentence(sentence.id);
+        setShowPopUp(false);
+    }
+
     return (
-        <div className="removeText">
-            { children }
-            <p>Are you sure to remove this sentence?</p>
-        </div>
+        <form className="popup-window" action="" method="post" onSubmit={async (event) => {
+            event.preventDefault();
+            await handleRemoveSentence();
+        }}>
+            <div className="removeText">
+                <p className="sentenceDisplayText">{num}. {sentence.sentence}</p>
+                <p>Are you sure to remove this sentence?</p>
+            </div>
+            <div className="popup-window-buttons">
+                <input type="button" value="Cancel" onClick={_ => {
+                    setShowPopUp(false);
+                }}/>
+                <input type="submit" value="Save"/>
+            </div>
+        </form>
     )
 }
 

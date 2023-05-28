@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ISelectorProps } from "../interfaces/selector-props.ts";
+import { ISelectorProps } from "../interfaces/SelectorProps.ts";
 import '../css/Selector.css';
 import {Link} from "react-router-dom";
 

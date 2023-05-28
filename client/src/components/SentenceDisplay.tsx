@@ -1,38 +1,27 @@
-import {ISentenceDisplayProps} from '../interfaces/sentence-display-props.ts';
+import {ISentenceDisplayProps} from '../interfaces/SentenceDisplayProps.ts';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faPencil, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import '../css/SentenceDisplay.css'
 import EditSentence from "./EditSentence.tsx";
 import RemoveSentence from "./RemoveSentence.tsx";
 
-const handleEditButton = (id: number) => {
-    console.log(`Editing ${id} sentence`);
-}
-
-const handleRemoveButton = (id: number) => {
-    console.log(`Removing ${id} sentence`);
-}
-
-const SentenceDisplay = ({num, id, sentence, setPopUpWindow, switchShowWindow}: ISentenceDisplayProps) => {
+const SentenceDisplay = ({num, sentence, setPopUpWindow, switchShowWindow,
+                             currentSentences, updateSentences}: ISentenceDisplayProps) => {
     return (
         <div className="sentenceDisplay">
             <p className="sentenceDisplayText">{num}. {sentence.sentence}</p>
             <div className="sentenceButtons">
                 <button className="editSentence" onClick={() => {
                     switchShowWindow(true);
-                    setPopUpWindow(<EditSentence currentValues={sentence}/>);
-                    handleEditButton(id);
+                    setPopUpWindow(<EditSentence currentSentences={currentSentences} currentValues={sentence}
+                    updateSentences={updateSentences} setShowPopUp={switchShowWindow}/>);
                 }}>
                     <FontAwesomeIcon icon={faPencil} />
                 </button>
                 <button className="removeSentence"  onClick={() => {
                     switchShowWindow(true);
-                    setPopUpWindow(
-                        <RemoveSentence>
-                            { <p className="sentenceDisplayText">{num}. {sentence.sentence}</p> }
-                        </RemoveSentence>
-                    );
-                    handleRemoveButton(id);
+                    setPopUpWindow(<RemoveSentence num={num} sentence={sentence} setShowPopUp={switchShowWindow}
+                    currentSentences={currentSentences} updateSentences={updateSentences}/>);
                 }}>
                     <FontAwesomeIcon icon={faTrashAlt} />
                 </button>

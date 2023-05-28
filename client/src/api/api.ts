@@ -1,6 +1,6 @@
 import config from "../config/config.ts";
 import axios from "axios";
-import {ISentence} from "../interfaces/sentence.ts";
+import {ISentence} from "../interfaces/ISentence.ts";
 
 const getAPISentences = async (): Promise<ISentence[]> => {
     const url = `http://${config.server.hostname}:${config.server.port}/sentences`;
@@ -30,8 +30,18 @@ const postAPISentence = async (newSentence: ISentence): Promise<number> => {
         .catch(_ => -1);
 }
 
+const putAPIEditSentence = async (newSentence: ISentence): Promise<void> => {
+    const url = `http://${config.server.hostname}:${config.server.port}/sentences/edit/${newSentence.id}`;
+    await axios.put(url, {sentence: newSentence});
+}
+
+const removeAPISentence = async (sentenceId: number): Promise<void> => {
+    const url = `http://${config.server.hostname}:${config.server.port}/sentences/delete/${sentenceId}`;
+    await axios.delete(url);
+}
+
 const getAPIExamSentences = (num: number) => {
     console.log(num)
 }
 
-export { getAPISentences, getAPIExamSentences, postAPISentence }
+export { getAPISentences, getAPIExamSentences, postAPISentence, putAPIEditSentence, removeAPISentence }
