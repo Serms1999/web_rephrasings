@@ -15,10 +15,7 @@ const Sentences = () => {
     const [currentPopUpWindow, setPopUpWindow] = useState(<EditSentence />);
     const [currentSentences, updateSentences] = useState(apiSentences);
 
-    const handleNewSentence = async (newSentence: ISentence) => {
-        console.log('Adding new sentence');
-        console.log(newSentence);
-
+    const handleNewSentence = async (newSentence: ISentence): Promise<void> => {
         const sentencesCopy = [...currentSentences];
         newSentence.id = await postAPISentence(newSentence);
         sentencesCopy.push(newSentence);

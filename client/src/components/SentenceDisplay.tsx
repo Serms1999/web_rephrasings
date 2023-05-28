@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faPencil, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import '../css/SentenceDisplay.css'
 import EditSentence from "./EditSentence.tsx";
+import RemoveSentence from "./RemoveSentence.tsx";
 
 const handleEditButton = (id: number) => {
     console.log(`Editing ${id} sentence`);
@@ -26,9 +27,11 @@ const SentenceDisplay = ({num, id, sentence, setPopUpWindow, switchShowWindow}: 
                 </button>
                 <button className="removeSentence"  onClick={() => {
                     switchShowWindow(true);
-                    setPopUpWindow(<>
-                        Removing
-                    </>);
+                    setPopUpWindow(
+                        <RemoveSentence>
+                            { <p className="sentenceDisplayText">{num}. {sentence.sentence}</p> }
+                        </RemoveSentence>
+                    );
                     handleRemoveButton(id);
                 }}>
                     <FontAwesomeIcon icon={faTrashAlt} />
