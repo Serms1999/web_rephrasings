@@ -1,0 +1,52 @@
+body {
+    background-color: #f7f6f6;
+}
+
+.examWindow {
+    width: 50vw;
+    height: 50vh;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 20px;
+    position: relative;
+}
+
+.examText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.leftButton, .rightButton {
+    position: absolute;
+    bottom: 7%;
+
+    background-color: inherit;
+    color: #2596be;
+}
+
+.examWindow button:hover {
+    background-color: #F7F6F6;
+    color: #2385af;
+}
+
+.leftButton {
+    left: 7%;
+}
+
+.rightButton {
+    right: 7%;
+}
+
+.initSentence {
+    margin-right: 0.6vw;
+}
+
+.examText input[type='number'] {
+    width: 2vw;
+}

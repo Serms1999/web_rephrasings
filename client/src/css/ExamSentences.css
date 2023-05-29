@@ -1,0 +1,44 @@
+.examText .question {
+    display: flex;
+    flex-direction: column;
+}
+
+.question .questionSentence {
+    text-transform: capitalize;
+    margin: 0 0 5px;
+}
+
+.question .questionKeyword {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0;
+}
+
+.question .newSentence {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.question .newSentence .firstPart {
+    text-transform: capitalize;
+}
+
+.question .newSentence input[type="text"] {
+    height: fit-content;
+    margin: 0 5px 0;
+}
+
+.question .newSentence .showAnswer {
+    position: absolute;
+    top: 50px;
+    right: 20%;
+    font-size: 9px;
+    background-color: #2385af;
+    color: #f7f6f6;
+}
+
+.question .newSentence .showAnswer:hover {
+    background-color: #2596be;
+    color: white;
+}
