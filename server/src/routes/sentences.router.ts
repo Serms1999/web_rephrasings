@@ -1,11 +1,14 @@
 import { Router } from 'express';
 const sentencesRouter : Router = Router();
 
-import {addSentence, editSentence, getSentences, removeSentence} from '../handlers/sentences.handler';
+import {addSentence, editSentence, getSentenceCount, getSentences, removeSentence} from '../handlers/sentences.handler';
 
 sentencesRouter.route('/')
     .get(getSentences)
     .post(addSentence);
+
+sentencesRouter.route('/count')
+    .get(getSentenceCount)
 
 sentencesRouter.route('/edit/:id')
     .put(editSentence);

@@ -5,7 +5,7 @@ import {RowDataPacket} from 'mysql2';
 import {DatabaseError} from "../interfaces/errors";
 
 const getDBSentences = async () => {
-    let query = 'SELECT * FROM question';
+    const query = 'SELECT * FROM question';
 
     try {
         const connection = await Connect();
@@ -16,8 +16,20 @@ const getDBSentences = async () => {
     }
 }
 
+const getDBSentencesCount = async () => {
+    const query = 'SELECT COUNT(id) FROM question';
+
+    try {
+        const connection = await Connect();
+        const result = await Query(connection, query);
+        return <RowDataPacket>result[0][0]['COUNT(id)'];
+    } catch (e) {
+        throw new DatabaseError(e);
+    }
+}
+
 const addDBSentence = async (newSentence: ISentence) => {
-    let query =
+    const query =
         'INSERT INTO question (sentence, keyword, sentence_start, sentence_end, answer)' +
         ' VALUES (?, ?, ?, ?, ?)';
 
@@ -78,4 +90,4 @@ const removeDBSentence = async (id: number)=> {
     }
 }
 
-export { getDBSentences, addDBSentence, editDBSentence, removeDBAllSentences, removeDBSentence };
+export { getDBSentences, getDBSentencesCount, addDBSentence, editDBSentence, removeDBAllSentences, removeDBSentence };

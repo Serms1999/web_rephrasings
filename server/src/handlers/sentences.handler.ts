@@ -1,5 +1,11 @@
 import { Request, Response } from 'express';
-import {getDBSentences, addDBSentence, editDBSentence, removeDBSentence} from '../controllers/sentences.controller';
+import {
+    getDBSentences,
+    addDBSentence,
+    editDBSentence,
+    removeDBSentence,
+    getDBSentencesCount
+} from '../controllers/sentences.controller';
 import { checkSentenceOnlyValidChars } from '../tools/sentences.tool';
 import { ISentence } from '../interfaces/sentences.interface';
 import {DatabaseError} from "../interfaces/errors";
@@ -10,6 +16,21 @@ const getSentences = async (req: Request, res: Response) => {
         res.status(200).json(
             data
         );
+    } catch (e) {
+        if (e instanceof DatabaseError) {
+            res.status(500).json({
+                err: 'Connection error'
+            });
+        }
+    }
+}
+
+const getSentenceCount = async (req: Request, res: Response) => {
+    try {
+        const data = await getDBSentencesCount();
+        res.status(200).json({
+            sentenceCount: data
+        });
     } catch (e) {
         if (e instanceof DatabaseError) {
             res.status(500).json({
@@ -93,4 +114,4 @@ const removeSentence = async (req: Request, res: Response) => {
     }
 }
 
-export { getSentences, addSentence, editSentence, removeSentence }
+export { getSentences, getSentenceCount, addSentence, editSentence, removeSentence }
