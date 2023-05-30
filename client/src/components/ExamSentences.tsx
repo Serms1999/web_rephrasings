@@ -36,6 +36,7 @@ const ExamSentences = ({ sentences, userAnswers, setUserAnswers, updatePage }: I
     }
 
     const handleShowAnswer = () => {
+        answerInput.current.value = showAnswer ? userAnswers[sentenceIndex] : currentSentence.answer;
         toggleShowAnswer(!showAnswer);
     }
 
@@ -53,11 +54,10 @@ const ExamSentences = ({ sentences, userAnswers, setUserAnswers, updatePage }: I
                     <p className="questionKeyword">{currentSentence.keyword}</p>
                     <div className="newSentence">
                         <p className="firstPart">{currentSentence.sentence_start}</p>
-                        { !showAnswer && <input type={"text"} ref={answerInput} defaultValue={userAnswers[sentenceIndex]}
-                                                onChange={event => {
-                                                    updateAnswer(event.target.value);
-                                                }} /> }
-                        { showAnswer && <input type={"text"} value={currentSentence.answer} disabled /> }
+                        <input type={"text"} ref={answerInput} defaultValue={userAnswers[sentenceIndex]}
+                               disabled={showAnswer} onChange={event => {
+                                   updateAnswer(event.target.value);
+                        }}/>
                         <p className="lastPart">{currentSentence.sentence_end}</p>
                         <button className="showAnswer" onClick={handleShowAnswer}>
                             <FontAwesomeIcon icon={faEye}/> {showAnswer ? "Hide" : "Show"} answer
