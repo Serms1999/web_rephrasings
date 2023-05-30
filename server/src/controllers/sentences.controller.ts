@@ -1,4 +1,4 @@
-import {Connect, Query} from '../config/db';
+import {Connect, Query, Release} from '../database/db';
 import mysql from 'mysql2/promise';
 import {ISentence} from '../interfaces/sentences.interface';
 import {RowDataPacket} from 'mysql2';
@@ -10,6 +10,7 @@ const getDBSentences = async () => {
     try {
         const connection = await Connect();
         const result = await Query(connection, query);
+        await Release(connection);
         return <ISentence[]>result[0];
     } catch (e) {
         throw new DatabaseError(e);
@@ -22,6 +23,7 @@ const getDBSentencesCount = async () => {
     try {
         const connection = await Connect();
         const result = await Query(connection, query);
+        await Release(connection);
         return <RowDataPacket>result[0][0]['COUNT(id)'];
     } catch (e) {
         throw new DatabaseError(e);
@@ -42,6 +44,7 @@ const addDBSentence = async (newSentence: ISentence) => {
             newSentence.sentence_end,
             newSentence.answer
         ]);
+        await Release(connection);
         return <RowDataPacket>result[0];
     } catch (e) {
         throw new DatabaseError(e);
@@ -63,6 +66,7 @@ const editDBSentence = async (id: number, newSentence: ISentence) => {
             newSentence.answer,
             id
         ]);
+        await Release(connection);
     } catch (e) {
         throw new DatabaseError(e);
     }
@@ -74,6 +78,7 @@ const removeDBAllSentences = async () => {
     try {
         const connection = await Connect();
         await Query(connection, query);
+        await Release(connection);
     } catch (e) {
         throw new DatabaseError(e);
     }
@@ -85,6 +90,7 @@ const removeDBSentence = async (id: number)=> {
     try {
         const connection = await Connect();
         await Query(connection, query, [id]);
+        await Release(connection);
     } catch (e) {
         throw new DatabaseError(e);
     }
