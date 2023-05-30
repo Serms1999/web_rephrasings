@@ -18,11 +18,14 @@ const Exam = () => {
     const [currentPage, updatePage] = useState(EXAM_PAGES.INIT);
     const [sentences, updateSentences] = useState([generateSentence(0)]);
     const sentenceCount = useRef() as MutableRefObject<HTMLInputElement>;
+    const [userAnswers, setUserAnswers] = useState(['']);
 
     const pages = [
-        <ExamInit sentenceCount={sentenceCount} updatePage={updatePage} updateSentences={updateSentences} />,
-        <ExamSentences sentences={sentences} updatePage={updatePage} />,
-        <ExamEnd />
+        <ExamInit sentenceCount={sentenceCount} updatePage={updatePage}
+                  setUserAnswers={setUserAnswers} updateSentences={updateSentences} />,
+        <ExamSentences sentences={sentences} userAnswers={userAnswers}
+                       setUserAnswers={setUserAnswers} updatePage={updatePage} />,
+        <ExamEnd sentences={sentences} userAnswers={userAnswers} />
     ];
 
     return (

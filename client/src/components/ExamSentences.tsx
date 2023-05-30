@@ -3,27 +3,32 @@ import {IExamSentenceProps} from "../interfaces/ExamSentenceProps.ts";
 import ExamButtons from "./ExamButtons.tsx";
 import ExamLeftButton from "./ExamLeftButton.tsx";
 import ExamRightButton from "./ExamRightButton.tsx";
-import {useState} from "react";
+import {MutableRefObject, useRef, useState} from "react";
 import {EXAM_PAGES} from "../pages/Exam.tsx";
 import {faEye} from "@fortawesome/free-solid-svg-icons";
 import "../css/ExamSentences.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-const ExamSentences = ({ sentences, updatePage }: IExamSentenceProps) => {
+const ExamSentences = ({ sentences, userAnswers, setUserAnswers, updatePage }: IExamSentenceProps) => {
     const [sentenceIndex, changeSentence] = useState(0);
     const [currentSentence, updateSentence] = useState(sentences[sentenceIndex]);
     const [showAnswer, toggleShowAnswer] = useState(false);
-    const [currentAnswer, updateAnswer] = useState("");
+    const answerInput = useRef() as MutableRefObject<HTMLInputElement>;
+
     const handleBack = () => {
+        toggleShowAnswer(false);
         let index = sentenceIndex - 1;
         changeSentence(index);
-        updateSentence(sentences[sentenceIndex]);
+        updateSentence(sentences[index]);
+        answerInput.current.value = userAnswers[index];
     }
 
     const handleNext = () => {
+        toggleShowAnswer(false);
         let index = sentenceIndex + 1;
         changeSentence(index);
-        updateSentence(sentences[sentenceIndex]);
+        updateSentence(sentences[index]);
+        answerInput.current.value = userAnswers[index];
     }
 
     const handleFinish = () => {
@@ -34,6 +39,12 @@ const ExamSentences = ({ sentences, updatePage }: IExamSentenceProps) => {
         toggleShowAnswer(!showAnswer);
     }
 
+    const updateAnswer = (answer: string) => {
+        const answersCopy = [...userAnswers];
+        answersCopy[sentenceIndex] = answer;
+        setUserAnswers(answersCopy);
+    }
+
     return (
         <>
             <ExamText>
@@ -42,9 +53,10 @@ const ExamSentences = ({ sentences, updatePage }: IExamSentenceProps) => {
                     <p className="questionKeyword">{currentSentence.keyword}</p>
                     <div className="newSentence">
                         <p className="firstPart">{currentSentence.sentence_start}</p>
-                        { !showAnswer && <input type={"text"} defaultValue={currentAnswer} onChange={event => {
-                            updateAnswer(event.target.value)
-                        }} /> }
+                        { !showAnswer && <input type={"text"} ref={answerInput} defaultValue={userAnswers[sentenceIndex]}
+                                                onChange={event => {
+                                                    updateAnswer(event.target.value);
+                                                }} /> }
                         { showAnswer && <input type={"text"} value={currentSentence.answer} disabled /> }
                         <p className="lastPart">{currentSentence.sentence_end}</p>
                         <button className="showAnswer" onClick={handleShowAnswer}>

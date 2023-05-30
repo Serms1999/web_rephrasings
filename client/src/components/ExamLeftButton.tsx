@@ -1,8 +1,8 @@
 import { ExamButtonProps } from "../interfaces/ExamButtonProps.ts";
 
-const ExamLeftButton = ({ text }: ExamButtonProps) => {
+const ExamLeftButton = ({ text, handler }: ExamButtonProps) => {
     return (
-        <button className="leftButton">{text}</button>
+        <button className="leftButton" onClick={handler} >{text}</button>
     )
 }
 
