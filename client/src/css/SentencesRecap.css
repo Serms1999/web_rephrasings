@@ -1,0 +1,47 @@
+.sentencesRecapText p {
+    margin: 0;
+}
+
+.sentencesRecapText {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    justify-content: center;
+    margin: 0 2vw 2vw;
+}
+
+.sentencesRecapText .keyword {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.sentencesRecapText .newSentence, .userAnswer {
+    display: flex;
+    margin-top: 1vw;
+    align-items: center;
+}
+
+.sentencesRecapText .answer {
+    margin: 0 0.6vw 0;
+}
+
+.sentencesRecapButtons {
+    margin-top: 5vw;
+    position: relative;
+}
+
+.sentencesRecapButtons .leftButton:hover, .rightButton:hover {
+    background-color: #f7f6f6;
+    color: #2385af;
+}
+
+.closeRecap {
+    position: relative;
+    top: 0.6vw;
+    left: 90%;
+    background-color: inherit;
+}
+
+.closeRecap:hover {
+    background-color: #f7f6f6;
+}

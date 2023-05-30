@@ -1,0 +1,7 @@
+.pieChart *:focus {
+    outline-width: 0;
+}
+
+.pieChart text {
+    text-transform: capitalize;
+}

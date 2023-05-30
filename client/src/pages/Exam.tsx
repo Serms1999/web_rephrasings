@@ -21,11 +21,12 @@ const Exam = () => {
     const [userAnswers, setUserAnswers] = useState(['']);
 
     const pages = [
-        <ExamInit sentenceCount={sentenceCount} updatePage={updatePage}
-                  setUserAnswers={setUserAnswers} updateSentences={updateSentences} />,
+        <ExamInit sentenceCount={sentenceCount} updatePage={updatePage} updateSentences={updateSentences}
+                  setUserAnswers={setUserAnswers} />,
         <ExamSentences sentences={sentences} userAnswers={userAnswers}
                        setUserAnswers={setUserAnswers} updatePage={updatePage} />,
-        <ExamEnd sentences={sentences} userAnswers={userAnswers} />
+        <ExamEnd sentences={sentences} userAnswers={userAnswers} updatePage={updatePage}
+                 updateSentences={updateSentences} setUserAnswers={setUserAnswers} />
     ];
 
     return (

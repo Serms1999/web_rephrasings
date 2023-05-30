@@ -30,7 +30,7 @@ body {
     color: #2596be;
 }
 
-.examWindow button:hover {
+.examWindow .leftButton:hover, .rightButton:hover {
     background-color: #F7F6F6;
     color: #2385af;
 }

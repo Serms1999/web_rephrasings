@@ -3,17 +3,23 @@ import {IExamSentenceProps} from "../interfaces/ExamSentenceProps.ts";
 import ExamButtons from "./ExamButtons.tsx";
 import ExamLeftButton from "./ExamLeftButton.tsx";
 import ExamRightButton from "./ExamRightButton.tsx";
-import {MutableRefObject, useRef, useState} from "react";
+import {MutableRefObject, useEffect, useRef, useState} from "react";
 import {EXAM_PAGES} from "../pages/Exam.tsx";
 import {faEye} from "@fortawesome/free-solid-svg-icons";
 import "../css/ExamSentences.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+
+let start = 0;
 
 const ExamSentences = ({ sentences, userAnswers, setUserAnswers, updatePage }: IExamSentenceProps) => {
     const [sentenceIndex, changeSentence] = useState(0);
     const [currentSentence, updateSentence] = useState(sentences[sentenceIndex]);
     const [showAnswer, toggleShowAnswer] = useState(false);
     const answerInput = useRef() as MutableRefObject<HTMLInputElement>;
+
+    useEffect(() => {
+        start = Date.now();
+    }, []);
 
     const handleBack = () => {
         toggleShowAnswer(false);
@@ -32,7 +38,12 @@ const ExamSentences = ({ sentences, userAnswers, setUserAnswers, updatePage }: I
     }
 
     const handleFinish = () => {
-        updatePage(EXAM_PAGES.END);
+        const totalTime = new Date(Date.now() - start);
+        const time = totalTime.toLocaleTimeString('es-ES', {minute: "2-digit", second: "2-digit"});
+        if (confirm(`Are you sure to finish the test?\nTime: ${time}`)) {
+            answerInput.current.value = "";
+            updatePage(EXAM_PAGES.END);
+        }
     }
 
     const handleShowAnswer = () => {

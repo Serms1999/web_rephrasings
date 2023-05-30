@@ -1,0 +1,16 @@
+.examButtons .recapButton {
+    position: absolute;
+    margin: 0 auto 0;
+    left: 0;
+    right: 0;
+    bottom: 7%;
+    width: fit-content;
+
+    background-color: inherit;
+    color: #2596be;
+}
+
+.examButtons .recapButton:hover {
+    background-color: #F7F6F6;
+    color: #2385af;
+}
