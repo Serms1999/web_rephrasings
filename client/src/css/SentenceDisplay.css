@@ -39,5 +39,6 @@
 
 .sentenceDisplayText {
     margin-left: auto;
+    margin-bottom: 0;
     padding-right: 10px;
 }

@@ -6,24 +6,6 @@ import Exam from "../pages/Exam.tsx";
 import CustomNavbar from "../layout/Navbar.tsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-/*
-const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <Home />
-
-    },
-    {
-        path: '/sentences',
-        element: <Sentences />
-    },
-    {
-        path: '/exam',
-        element: <Exam />
-    }
-])
- */
-
 const App = () => {
     return (
         <>

@@ -38,8 +38,8 @@
 .closeRecap {
     position: relative;
     top: 0.6vw;
-    left: 90%;
-    background-color: inherit;
+    right: -85%;
+    background: none;
 }
 
 .closeRecap:hover {
