@@ -11,6 +11,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     // @ts-ignore
-    port: process.env.CLIENT_PORT
+    port: process.env.CLIENT_PORT || 3000
   }
 })
