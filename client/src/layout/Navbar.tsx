@@ -8,7 +8,7 @@ import {faHouse, faList, faListCheck } from "@fortawesome/free-solid-svg-icons";
 function CustomNavbar() {
     return (
         <>
-            <Navbar className="navBg" variant="dark" expand="lg">
+            <Navbar className="navBg fixed-top" variant="dark" expand="lg">
                 <Container>
                     <Navbar.Brand as={Link} to="/" >Rephrasing</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />

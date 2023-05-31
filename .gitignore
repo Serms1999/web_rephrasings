@@ -6,8 +6,8 @@
 */node_modules
 
 # Remove .env files
-server/src/config/.env
-client/src/config/.env
+server/.env
+client/.env
 
 # Remove builds
 server/dist

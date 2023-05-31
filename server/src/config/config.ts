@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import path from "path";
 import {getSentences} from "../handlers/sentences.handler";
 
-dotenv.config({path: path.resolve(__dirname, '../../config/.env')});
+dotenv.config({path: path.resolve(__dirname, '../../.env')});
 
 const DB_HOST: string = process.env.DB_HOST || 'localhost';
 const DB_DATABASE: string = process.env.DB_DATABASE || '';
