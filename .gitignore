@@ -5,8 +5,9 @@
 # Remove node depencies
 */node_modules
 
-# Remove .env file
+# Remove .env files
 server/src/config/.env
+client/src/config/.env
 
 # Remove TypeScript compiled filed
 server/src/dist
