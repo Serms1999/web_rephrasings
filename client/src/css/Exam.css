@@ -23,6 +23,7 @@
     border: 1px solid black;
     border-radius: 5px;
     margin-left: 10px;
+    background-color: #f7f6f6;
 }
 
 .leftButton, .rightButton {

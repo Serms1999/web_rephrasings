@@ -1,3 +1,7 @@
+* {
+
+}
+
 .sentenceDisplay {
     display: flex;
     flex-direction: row;

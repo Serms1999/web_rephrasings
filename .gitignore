@@ -9,5 +9,6 @@
 server/src/config/.env
 client/src/config/.env
 
-# Remove TypeScript compiled filed
-server/src/dist
+# Remove builds
+server/dist
+client/dist

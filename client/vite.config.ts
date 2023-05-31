@@ -12,5 +12,12 @@ export default defineConfig({
   server: {
     // @ts-ignore
     port: process.env.CLIENT_PORT || 3000
+  },
+  build: {
+    target: ['es2022', 'chrome89', 'edge89', 'safari15', 'firefox89']
+  },
+  preview: {
+    // @ts-ignore
+    port: process.env.CLIENT_PORT || 3000
   }
 })
