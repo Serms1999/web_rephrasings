@@ -8,8 +8,15 @@
     background-color: #2596be;
     font-size: 2.5vw;
     padding-top: 2.5vw;
+    border-radius: 20px;
 }
 
 .selector:hover {
     background-color: #2385af;
 }
+
+.selector p {
+    color: white;
+}
+
+.selector a

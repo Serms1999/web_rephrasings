@@ -8,9 +8,9 @@ const Selector = ({iconSource, text}: ISelectorProps) => {
     return (
         <Link to={`/${text.toLowerCase()}`}>
             <button className="selector">
-                <br />
-                <FontAwesomeIcon icon={iconSource} />
-                <p>{text}</p>
+                    <br />
+                    <FontAwesomeIcon icon={iconSource} style={{color: "white"}} />
+                    <p>{text}</p>
             </button>
         </Link>
     )
