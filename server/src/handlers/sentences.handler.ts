@@ -4,7 +4,7 @@ import {
     addDBSentence,
     editDBSentence,
     removeDBSentence,
-    getDBSentencesCount
+    getDBSentencesCount, importDBSentences
 } from '../controllers/sentences.controller';
 import { checkSentenceOnlyValidChars } from '../tools/sentences.tool';
 import { ISentence } from '../interfaces/sentences.interface';
@@ -114,4 +114,36 @@ const removeSentence = async (req: Request, res: Response) => {
     }
 }
 
-export { getSentences, getSentenceCount, addSentence, editSentence, removeSentence }
+const importSentences = async (req: Request, res: Response) => {
+    const data = req.body;
+    if (!(req.body instanceof Array)) {
+        res.status(400).json({
+            err: 'Bad request'
+        });
+        return;
+    }
+
+    data.forEach(sentence => {
+        if (!checkSentenceOnlyValidChars(sentence)) {
+            res.status(400).json({
+                err: 'Sentence bad formatted'
+            });
+            return;
+        }
+    })
+
+    try {
+        const insertIndexes = await importDBSentences(<ISentence[]>data);
+        res.status(202).json({
+            insertIndexes: insertIndexes
+        });
+    } catch (e) {
+        if (e instanceof DatabaseError) {
+            res.status(400).json({
+                err: 'Bad request'
+            });
+        }
+    }
+}
+
+export { getSentences, getSentenceCount, addSentence, editSentence, removeSentence, importSentences }

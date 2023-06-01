@@ -1,0 +1,56 @@
+.manageDataWindow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.dataButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.closeData {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+}
+
+.closeData:hover {
+    background-color: #f7f6f6;
+}
+
+.importData, .exportData {
+    border: 2px solid black;
+    color: white;
+}
+
+.importData {
+    display: flex;
+    background-color: #75b798;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    gap: 5px;
+}
+
+.exportData {
+    background-color: #ea7246;
+}
+
+.importData:hover {
+    cursor: pointer;
+}
+
+.dataButtons input[type="file"] {
+    display: none;
+}

@@ -11,11 +11,25 @@
     grid-row-gap: 10px;
 }
 
+.manageSentencesButtons {
+    display: flex;
+    gap: 20px;
+}
+
 .addSentence {
     width: fit-content;
     border: 2px solid black;
     border-radius: 15px;
     background-color: #58a942;
+    color: white;
+    height: 73px;
+}
+
+.manageDataButton {
+    width: fit-content;
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: #4b26c9;
     color: white;
     height: 73px;
 }

@@ -96,4 +96,26 @@ const removeDBSentence = async (id: number)=> {
     }
 }
 
-export { getDBSentences, getDBSentencesCount, addDBSentence, editDBSentence, removeDBAllSentences, removeDBSentence };
+const importDBSentences = async (importedSentences: ISentence[]): Promise<number[]> => {
+    let query =
+        'INSERT INTO question (sentence, keyword, sentence_start, sentence_end, answer)' +
+        ' VALUES (?, ?, ?, ?, ?)';
+    query += ',(?, ?, ?, ?, ?)'.repeat(importedSentences.length - 1);
+    const values = importedSentences.map(sentence => {
+        return [sentence.sentence, sentence.keyword, sentence.sentence_start, sentence.sentence_end, sentence.answer];
+    }).flat();
+
+    try {
+        const connection = await Connect();
+        const result = await Query(connection, query, values);
+        await Release(connection);
+        // @ts-ignore
+        const firstIndex: number = result[0].insertId;
+        return Array.from({length: importedSentences.length}, (_, i) => i + firstIndex);
+    } catch (e) {
+        throw new DatabaseError(e);
+    }
+}
+
+export { getDBSentences, getDBSentencesCount, addDBSentence, editDBSentence,
+    removeDBAllSentences, removeDBSentence, importDBSentences };

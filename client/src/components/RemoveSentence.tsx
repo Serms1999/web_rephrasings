@@ -1,14 +1,14 @@
 import {IRemoveSentenceProps} from "../interfaces/RemoveSentenceProps.ts";
 import "../css/RemoveSentence.css";
 import {ISentence} from "../interfaces/ISentence.ts";
-import {removeAPISentence} from "../api/api.ts";
+import {deleteAPISentence} from "../api/api.ts";
 
 const RemoveSentence = ({ num, sentence, setShowPopUp, currentSentences, updateSentences }: IRemoveSentenceProps) => {
 
     const handleRemoveSentence = async () => {
         const sentencesCopy: ISentence[] = [...currentSentences].filter(s => s.id !== sentence.id);
         updateSentences(sentencesCopy);
-        await removeAPISentence(sentence.id);
+        await deleteAPISentence(sentence.id);
         setShowPopUp(false);
     }
 
