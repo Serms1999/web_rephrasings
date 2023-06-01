@@ -12,7 +12,3 @@ CREATE TABLE question (
     sentence_end VARCHAR(50) NOT NULL,
     answer VARCHAR(50) NOT NULL
 );
-
-INSERT INTO question (sentence, keyword, sentence_start, sentence_end, answer)
-    VALUES ('sentence1', 'keyword1', 'start1', 'end1', 'answer1'),
-           ('sentence2', 'keyword2', 'start2', 'end2', 'answer2');
