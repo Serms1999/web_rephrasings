@@ -1,11 +1,13 @@
 import {Connect, Query, Release} from '../database/db';
-import mysql from 'mysql2/promise';
 import {ISentence} from '../interfaces/sentences.interface';
 import {RowDataPacket} from 'mysql2';
 import {DatabaseError} from "../interfaces/errors";
+import config from "../config/config";
+
+const tableName = config.db.table;
 
 const getDBSentences = async () => {
-    const query = 'SELECT * FROM question';
+    const query = `SELECT * FROM ${tableName}`;
 
     try {
         const connection = await Connect();
@@ -18,7 +20,7 @@ const getDBSentences = async () => {
 }
 
 const getDBSentencesCount = async () => {
-    const query = 'SELECT COUNT(id) FROM question';
+    const query = `SELECT COUNT(id) FROM ${tableName}`;
 
     try {
         const connection = await Connect();
@@ -32,7 +34,7 @@ const getDBSentencesCount = async () => {
 
 const addDBSentence = async (newSentence: ISentence) => {
     const query =
-        'INSERT INTO question (sentence, keyword, sentence_start, sentence_end, answer)' +
+        `INSERT INTO ${tableName} (sentence, keyword, sentence_start, sentence_end, answer)` +
         ' VALUES (?, ?, ?, ?, ?)';
 
     try {
@@ -52,7 +54,7 @@ const addDBSentence = async (newSentence: ISentence) => {
 }
 
 const editDBSentence = async (id: number, newSentence: ISentence) => {
-    const query = 'UPDATE question' +
+    const query = `UPDATE ${tableName}` +
         ' SET sentence=?, keyword=?, sentence_start=?, sentence_end=?, answer=?' +
         ' WHERE id=?';
 
@@ -73,7 +75,7 @@ const editDBSentence = async (id: number, newSentence: ISentence) => {
 }
 
 const removeDBAllSentences = async () => {
-    const query = 'DELETE FROM question';
+    const query = `DELETE FROM ${tableName}`;
 
     try {
         const connection = await Connect();
@@ -85,7 +87,7 @@ const removeDBAllSentences = async () => {
 }
 
 const removeDBSentence = async (id: number)=> {
-    const query = 'DELETE FROM question WHERE id=?';
+    const query = `DELETE FROM ${tableName} WHERE id=?`;
 
     try {
         const connection = await Connect();
@@ -98,7 +100,7 @@ const removeDBSentence = async (id: number)=> {
 
 const importDBSentences = async (importedSentences: ISentence[]): Promise<number[]> => {
     let query =
-        'INSERT INTO question (sentence, keyword, sentence_start, sentence_end, answer)' +
+        `INSERT INTO ${tableName} (sentence, keyword, sentence_start, sentence_end, answer)` +
         ' VALUES (?, ?, ?, ?, ?)';
     query += ',(?, ?, ?, ?, ?)'.repeat(importedSentences.length - 1);
     const values = importedSentences.map(sentence => {

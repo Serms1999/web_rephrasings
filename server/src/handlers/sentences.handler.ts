@@ -4,7 +4,7 @@ import {
     addDBSentence,
     editDBSentence,
     removeDBSentence,
-    getDBSentencesCount, importDBSentences
+    getDBSentencesCount, importDBSentences, removeDBAllSentences
 } from '../controllers/sentences.controller';
 import { checkSentenceOnlyValidChars } from '../tools/sentences.tool';
 import { ISentence } from '../interfaces/sentences.interface';
@@ -146,4 +146,17 @@ const importSentences = async (req: Request, res: Response) => {
     }
 }
 
-export { getSentences, getSentenceCount, addSentence, editSentence, removeSentence, importSentences }
+const eraseDatabase = async (req: Request, res: Response) => {
+    try {
+        await removeDBAllSentences();
+        res.status(204).send();
+    } catch (e) {
+        if (e instanceof DatabaseError) {
+            res.status(500).json({
+                err: 'Database error'
+            });
+        }
+    }
+}
+
+export { getSentences, getSentenceCount, addSentence, editSentence, removeSentence, importSentences, eraseDatabase }

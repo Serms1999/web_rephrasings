@@ -1,12 +1,12 @@
 import {IManageDataProps} from "../interfaces/ManageDataProps.ts";
 import "../css/ManageData.css"
-import {faFileImport, faFileExport, faXmark} from "@fortawesome/free-solid-svg-icons";
+import {faFileImport, faFileExport, faXmark, faEraser} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {getAPISentences, putAPIImportData} from "../api/api.ts";
+import {eraseApiDatabase, getSentencesFromApi, importSentencesIntoDatabaseApi} from "../api/api.ts";
 import {ISentence} from "../interfaces/ISentence.ts";
 
 const handleExport = async () => {
-    const sentences = await getAPISentences();
+    const sentences = await getSentencesFromApi();
     const data = JSON.stringify(sentences, null, 2);
     const link = document.createElement("a");
     link.download = "data.json";
@@ -24,7 +24,7 @@ const ManageData = ({ currentSentences, updateSentences, setShowPopUp }: IManage
             if (typeof reader.result !== "string") return;
             const data = JSON.parse(reader.result);
 
-            putAPIImportData(data)
+            importSentencesIntoDatabaseApi(data)
                 .then(indexes => {
                     data.forEach((sentence: ISentence, index: number) => {
                         sentence.id = indexes[index];
@@ -39,6 +39,14 @@ const ManageData = ({ currentSentences, updateSentences, setShowPopUp }: IManage
         });
 
         reader.readAsText(fileList[0]);
+        setShowPopUp(false);
+    }
+
+    const handleErase = async () => {
+        const databaseErased = await eraseApiDatabase();
+        if (databaseErased) {
+            updateSentences([]);
+        }
         setShowPopUp(false);
     }
 
@@ -60,6 +68,9 @@ const ManageData = ({ currentSentences, updateSentences, setShowPopUp }: IManage
                     <FontAwesomeIcon icon={faFileExport}/> Export
                 </button>
             </div>
+            <button className="eraseDatabase" onClick={handleErase}>
+                <FontAwesomeIcon icon={faEraser}/> Erase database
+            </button>
         </div>
     )
 }

@@ -1,5 +1,5 @@
-const SERVER_HOSTNAME: string = import.meta.env.SERVER_HOSTNAME || 'localhost';
-const SERVER_PORT = import.meta.env.SERVER_PORT || 8000;
+const SERVER_HOSTNAME: string = import.meta.env.SERVER_HOSTNAME ?? 'localhost';
+const SERVER_PORT = import.meta.env.SERVER_PORT ?? 8000;
 const HTTPS = import.meta.env.HTTPS === 'true';
 
 const SERVER = {

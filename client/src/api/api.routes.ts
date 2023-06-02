@@ -6,6 +6,7 @@ interface ApiRoutes {
     ADD_SENTENCE: string
     EDIT_SENTENCE: string,
     DELETE_SENTENCE: string,
+    ERASE_DATABASE: string,
     IMPORT_SENTENCES: string,
     EXAM_SENTENCES: string
 }
@@ -18,6 +19,7 @@ export const API_ROUTES: ApiRoutes  = {
     ADD_SENTENCE: `${SERVER_URL}/sentences`,
     EDIT_SENTENCE: `${SERVER_URL}/sentences/edit`,
     DELETE_SENTENCE: `${SERVER_URL}/sentences/delete`,
+    ERASE_DATABASE: `${SERVER_URL}/sentences/erase`,
     IMPORT_SENTENCES: `${SERVER_URL}/sentences/import`,
     EXAM_SENTENCES: `${SERVER_URL}/exam`
 }

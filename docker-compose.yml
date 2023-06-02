@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  db:
+    build: './sql'
+    env_file:
+      - .env
+    ports:
+      - '${DB_PORT}:${DB_PORT}'
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      rephrasing_net:
+        ipv4_address: "${DB_HOST}"
+  api:
+    build: './server'
+    ports:
+      - '${SERVER_PORT}:${SERVER_PORT}'
+    depends_on:
+      - db
+    env_file:
+      - .env
+    networks:
+      rephrasing_net:
+        ipv4_address: "${SERVER_HOSTNAME}"
+  web:
+    build: './client'
+    ports:
+      - '${CLIENT_PORT}:${CLIENT_PORT}'
+    env_file:
+      - .env
+    depends_on:
+      - api
+    networks:
+      rephrasing_net:
+        ipv4_address: "${CLIENT_HOSTNAME}"
+volumes:
+  db_data:
+networks:
+  rephrasing_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "${NETWORK_IP}"
+          gateway: "${GATEWAY_IP}"

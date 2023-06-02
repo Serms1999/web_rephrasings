@@ -28,7 +28,7 @@
     background-color: #f7f6f6;
 }
 
-.importData, .exportData {
+.importData, .exportData, .eraseDatabase {
     border: 2px solid black;
     color: white;
 }
@@ -45,6 +45,10 @@
 
 .exportData {
     background-color: #ea7246;
+}
+
+.eraseDatabase {
+    background-color: #ce5347;
 }
 
 .importData:hover {

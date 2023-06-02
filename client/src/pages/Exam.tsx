@@ -3,7 +3,7 @@ import {MutableRefObject, useRef, useState} from "react";
 import ExamInit from "../components/ExamInit.tsx";
 import ExamSentences from "../components/ExamSentences.tsx";
 import ExamEnd from "../components/ExamEnd.tsx";
-import {getAPISentenceCount} from "../api/api.ts";
+import {getSentenceCountFromApi} from "../api/api.ts";
 import {generateSentence} from "../tools/generateSentence.ts";
 
 export enum EXAM_PAGES {
@@ -12,7 +12,7 @@ export enum EXAM_PAGES {
     END
 }
 
-export const MAX_SENTENCES = await getAPISentenceCount();
+export const MAX_SENTENCES = await getSentenceCountFromApi();
 
 const Exam = () => {
     const [currentPage, updatePage] = useState(EXAM_PAGES.INIT);

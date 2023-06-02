@@ -1,13 +1,13 @@
 import SentenceForm from "./SentenceForm.tsx";
 import {ISentence} from "../interfaces/ISentence.ts";
 import {AddSentenceProps} from "../interfaces/AddSentenceProps.ts";
-import {postAPISentence} from "../api/api.ts";
+import {addApiSentence} from "../api/api.ts";
 
 const AddSentence = ({ currentSentences, updateSentences, setShowPopUp }: AddSentenceProps) => {
 
     const handleAddSentence = async (newSentence: ISentence) => {
         const sentencesCopy = [...currentSentences];
-        newSentence.id = await postAPISentence(newSentence);
+        newSentence.id = await addApiSentence(newSentence);
         sentencesCopy.push(newSentence);
         updateSentences(sentencesCopy);
     }

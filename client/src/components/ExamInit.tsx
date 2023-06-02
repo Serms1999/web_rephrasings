@@ -3,13 +3,13 @@ import ExamButtons from "./ExamButtons.tsx";
 import ExamRightButton from "./ExamRightButton.tsx";
 import {IExamInitProps} from "../interfaces/ExamInitProps.ts";
 import {EXAM_PAGES, MAX_SENTENCES} from "../pages/Exam.tsx";
-import {getAPIExamSentences} from "../api/api.ts";
+import {getExamSentencesFromApi} from "../api/api.ts";
 
 const ExamInit = ({sentenceCount, updatePage, setUserAnswers, updateSentences}: IExamInitProps) => {
     const handleStart = () => {
         const currentValue = parseInt(sentenceCount.current.value);
         if (1 <= currentValue && currentValue <= MAX_SENTENCES) {
-            getAPIExamSentences(currentValue)
+            getExamSentencesFromApi(currentValue)
                 .then(sentences => {
                     updateSentences(sentences);
                     setUserAnswers(Array(sentences.length).fill(''));

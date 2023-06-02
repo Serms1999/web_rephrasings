@@ -3,7 +3,7 @@ const sentencesRouter : Router = Router();
 
 import {
     addSentence,
-    editSentence,
+    editSentence, eraseDatabase,
     getSentenceCount,
     getSentences,
     importSentences,
@@ -25,5 +25,8 @@ sentencesRouter.route('/import')
 
 sentencesRouter.route('/delete/:id')
     .delete(removeSentence);
+
+sentencesRouter.route('/erase')
+    .delete(eraseDatabase)
 
 export { sentencesRouter };

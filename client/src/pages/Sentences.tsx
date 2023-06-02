@@ -3,12 +3,12 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faPlus, faDatabase } from '@fortawesome/free-solid-svg-icons';
 import '../css/SentencesPage.css';
 import {useState} from "react";
-import {getAPISentences} from "../api/api.ts";
+import {getSentencesFromApi} from "../api/api.ts";
 import PopUpWindow from "../components/PopUpWindow.tsx";
 import AddSentence from "../components/AddSentence.tsx";
 import ManageData from "../components/ManageData.tsx";
 
-const apiSentences = await getAPISentences();
+const apiSentences = await getSentencesFromApi();
 
 const Sentences = () => {
     const [showPopUpWindow, setShowPopUpWindow] = useState(false);
