@@ -12,6 +12,11 @@ services:
     networks:
       rephrasing_net:
         ipv4_address: "${DB_HOST}"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: '512M'
   api:
     build: './server'
     ports:
@@ -23,6 +28,11 @@ services:
     networks:
       rephrasing_net:
         ipv4_address: "${SERVER_HOSTNAME}"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.05'
+          memory: '256M'
   web:
     build: './client'
     ports:
@@ -34,6 +44,11 @@ services:
     networks:
       rephrasing_net:
         ipv4_address: "${CLIENT_HOSTNAME}"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.05'
+          memory: '256M'
 volumes:
   db_data:
 networks:
