@@ -1,9 +1,9 @@
-import ExamText from "./ExamText.tsx";
-import ExamButtons from "./ExamButtons.tsx";
-import ExamRightButton from "./ExamRightButton.tsx";
-import {IExamInitProps} from "../interfaces/ExamInitProps.ts";
-import {EXAM_PAGES, MAX_SENTENCES} from "../pages/Exam.tsx";
-import {getExamSentencesFromApi} from "../api/api.ts";
+import ExamText from "./ExamText";
+import ExamButtons from "./ExamButtons";
+import ExamRightButton from "./ExamRightButton";
+import {IExamInitProps} from "../interfaces/ExamInitProps";
+import {EXAM_PAGES, MAX_SENTENCES} from "../pages/Exam";
+import {getExamSentencesFromApi} from "../api/api";
 
 const ExamInit = ({sentenceCount, updatePage, setUserAnswers, updateSentences}: IExamInitProps) => {
     const handleStart = () => {

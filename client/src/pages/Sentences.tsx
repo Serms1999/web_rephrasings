@@ -1,12 +1,12 @@
-import SentenceDisplay from '../components/SentenceDisplay.tsx';
+import SentenceDisplay from '../components/SentenceDisplay';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faPlus, faDatabase } from '@fortawesome/free-solid-svg-icons';
 import '../css/SentencesPage.css';
 import {useState} from "react";
-import {getSentencesFromApi} from "../api/api.ts";
-import PopUpWindow from "../components/PopUpWindow.tsx";
-import AddSentence from "../components/AddSentence.tsx";
-import ManageData from "../components/ManageData.tsx";
+import {getSentencesFromApi} from "../api/api";
+import PopUpWindow from "../components/PopUpWindow";
+import AddSentence from "../components/AddSentence";
+import ManageData from "../components/ManageData";
 
 const apiSentences = await getSentencesFromApi();
 

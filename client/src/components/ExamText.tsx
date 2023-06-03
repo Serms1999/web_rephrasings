@@ -1,4 +1,4 @@
-import {IExamTextProps} from "../interfaces/ExamTextProps.ts";
+import {IExamTextProps} from "../interfaces/ExamTextProps";
 
 const ExamText = ({ children }: IExamTextProps) => {
     return (

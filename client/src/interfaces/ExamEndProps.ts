@@ -1,6 +1,6 @@
-import {ISentence} from "./ISentence.ts";
+import {ISentence} from "./ISentence";
 import {Dispatch, SetStateAction} from "react";
-import {EXAM_PAGES} from "../pages/Exam.tsx";
+import {EXAM_PAGES} from "../pages/Exam";
 
 export interface IExamEndProps {
     sentences: ISentence[],

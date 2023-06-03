@@ -1,4 +1,4 @@
-import { ExamButtonProps } from "../interfaces/ExamButtonProps.ts";
+import { ExamButtonProps } from "../interfaces/ExamButtonProps";
 
 const ExamRightButton = ({ text, handler }: ExamButtonProps) => {
     return (

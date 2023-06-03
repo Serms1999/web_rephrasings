@@ -1,9 +1,9 @@
-import {IManageDataProps} from "../interfaces/ManageDataProps.ts";
+import {IManageDataProps} from "../interfaces/ManageDataProps";
 import "../css/ManageData.css"
 import {faFileImport, faFileExport, faXmark, faEraser} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {eraseApiDatabase, getSentencesFromApi, importSentencesIntoDatabaseApi} from "../api/api.ts";
-import {ISentence} from "../interfaces/ISentence.ts";
+import {eraseApiDatabase, getSentencesFromApi, importSentencesIntoDatabaseApi} from "../api/api";
+import {ISentence} from "../interfaces/ISentence";
 
 const handleExport = async () => {
     const sentences = await getSentencesFromApi();

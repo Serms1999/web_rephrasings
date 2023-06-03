@@ -1,10 +1,10 @@
 import '../css/Exam.css';
 import {MutableRefObject, useRef, useState} from "react";
-import ExamInit from "../components/ExamInit.tsx";
-import ExamSentences from "../components/ExamSentences.tsx";
-import ExamEnd from "../components/ExamEnd.tsx";
-import {getSentenceCountFromApi} from "../api/api.ts";
-import {generateSentence} from "../tools/generateSentence.ts";
+import ExamInit from "../components/ExamInit";
+import ExamSentences from "../components/ExamSentences";
+import ExamEnd from "../components/ExamEnd";
+import {getSentenceCountFromApi} from "../api/api";
+import {generateSentence} from "../tools/generateSentence";
 
 export enum EXAM_PAGES {
     INIT,

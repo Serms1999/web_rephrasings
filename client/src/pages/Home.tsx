@@ -1,4 +1,4 @@
-import Selector from '../components/Selector.tsx';
+import Selector from '../components/Selector';
 import { faList, faListCheck } from '@fortawesome/free-solid-svg-icons';
 
 const Home = () => {

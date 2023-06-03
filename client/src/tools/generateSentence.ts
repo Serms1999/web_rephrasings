@@ -1,4 +1,4 @@
-import {ISentence} from "../interfaces/ISentence.ts";
+import {ISentence} from "../interfaces/ISentence";
 
 export const generateSentence = (num: number): ISentence => {
     return {

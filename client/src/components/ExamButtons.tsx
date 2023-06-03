@@ -1,4 +1,4 @@
-import {IExamButtonsProps} from "../interfaces/ExamButtonsProps.ts";
+import {IExamButtonsProps} from "../interfaces/ExamButtonsProps";
 
 const ExamButtons = ({ children }: IExamButtonsProps) => {
     return (

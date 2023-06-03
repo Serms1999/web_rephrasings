@@ -1,6 +1,6 @@
 import {Dispatch, MutableRefObject, SetStateAction} from "react";
-import {EXAM_PAGES} from "../pages/Exam.tsx";
-import {ISentence} from "./ISentence.ts";
+import {EXAM_PAGES} from "../pages/Exam";
+import {ISentence} from "./ISentence";
 
 export interface IExamInitProps {
     updatePage: Dispatch<SetStateAction<EXAM_PAGES>>,

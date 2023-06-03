@@ -1,17 +1,17 @@
-import ExamText from "./ExamText.tsx";
-import {IExamEndProps} from "../interfaces/ExamEndProps.ts";
-import ExamButtons from "./ExamButtons.tsx";
-import ExamLeftButton from "./ExamLeftButton.tsx";
-import ExamRightButton from "./ExamRightButton.tsx";
-import CustomChart from "./CustomChart.tsx";
-import {IChartData} from "../interfaces/ChartData.ts";
-import PopUpWindow from "./PopUpWindow.tsx";
-import {ISentence} from "../interfaces/ISentence.ts";
+import ExamText from "./ExamText";
+import {IExamEndProps} from "../interfaces/ExamEndProps";
+import ExamButtons from "./ExamButtons";
+import ExamLeftButton from "./ExamLeftButton";
+import ExamRightButton from "./ExamRightButton";
+import CustomChart from "./CustomChart";
+import {IChartData} from "../interfaces/ChartData";
+import PopUpWindow from "./PopUpWindow";
+import {ISentence} from "../interfaces/ISentence";
 import {useState} from "react";
-import SentencesRecap from "./SentencesRecap.tsx";
+import SentencesRecap from "./SentencesRecap";
 import "../css/ExamEnd.css"
-import {IResults} from "../interfaces/Results.ts";
-import {EXAM_PAGES} from "../pages/Exam.tsx";
+import {IResults} from "../interfaces/Results";
+import {EXAM_PAGES} from "../pages/Exam";
 
 export enum COLORS {
     CORRECT = "#00c49f",

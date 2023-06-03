@@ -1,4 +1,4 @@
-import {IChartData} from "./ChartData.ts";
+import {IChartData} from "./ChartData";
 
 export interface ICustomChartProps {
     data: IChartData[],

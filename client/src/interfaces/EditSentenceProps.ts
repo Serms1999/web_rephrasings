@@ -1,4 +1,4 @@
-import {ISentence} from "./ISentence.ts";
+import {ISentence} from "./ISentence";
 import {Dispatch, SetStateAction} from "react";
 
 export interface EditSentenceProps {

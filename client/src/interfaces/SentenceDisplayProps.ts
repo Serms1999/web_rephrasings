@@ -1,5 +1,5 @@
 import  { ReactElement, Dispatch, SetStateAction } from "react";
-import { ISentence } from "./ISentence.ts";
+import { ISentence } from "./ISentence";
 
 export interface ISentenceDisplayProps {
     num: number,

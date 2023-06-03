@@ -1,7 +1,7 @@
 import axios from "axios";
-import {ISentence} from "../interfaces/ISentence.ts";
-import {generateSentence} from "../tools/generateSentence.ts";
-import {API_ROUTES} from "./api.routes.ts";
+import {ISentence} from "../interfaces/ISentence";
+import {generateSentence} from "../tools/generateSentence";
+import {API_ROUTES} from "./api.routes";
 
 const getSentencesFromApi = async (): Promise<ISentence[]> => {
     const url = API_ROUTES.GET_SENTENCES;

@@ -1,7 +1,7 @@
-import SentenceForm from "./SentenceForm.tsx";
-import {ISentence} from "../interfaces/ISentence.ts";
-import {AddSentenceProps} from "../interfaces/AddSentenceProps.ts";
-import {addApiSentence} from "../api/api.ts";
+import SentenceForm from "./SentenceForm";
+import {ISentence} from "../interfaces/ISentence";
+import {AddSentenceProps} from "../interfaces/AddSentenceProps";
+import {addApiSentence} from "../api/api";
 
 const AddSentence = ({ currentSentences, updateSentences, setShowPopUp }: AddSentenceProps) => {
 

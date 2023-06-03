@@ -1,7 +1,7 @@
-import {IRemoveSentenceProps} from "../interfaces/RemoveSentenceProps.ts";
+import {IRemoveSentenceProps} from "../interfaces/RemoveSentenceProps";
 import "../css/RemoveSentence.css";
-import {ISentence} from "../interfaces/ISentence.ts";
-import {deleteSentenceFromApi} from "../api/api.ts";
+import {ISentence} from "../interfaces/ISentence";
+import {deleteSentenceFromApi} from "../api/api";
 
 const RemoveSentence = ({ num, sentence, setShowPopUp, currentSentences, updateSentences }: IRemoveSentenceProps) => {
 

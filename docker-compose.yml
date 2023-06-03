@@ -3,15 +3,15 @@ version: '3'
 services:
   db:
     build: './sql'
-    env_file:
-      - .env
     ports:
       - '${DB_PORT}:${DB_PORT}'
+    env_file:
+      - .env
     volumes:
       - db_data:/var/lib/mysql
     networks:
       rephrasing_net:
-        ipv4_address: "${DB_HOST}"
+        ipv4_address: '${DB_HOST}'
     deploy:
       resources:
         limits:
@@ -27,7 +27,7 @@ services:
       - .env
     networks:
       rephrasing_net:
-        ipv4_address: "${SERVER_HOSTNAME}"
+        ipv4_address: '${SERVER_HOSTNAME}'
     deploy:
       resources:
         limits:
@@ -39,11 +39,15 @@ services:
       - '${CLIENT_PORT}:${CLIENT_PORT}'
     env_file:
       - .env
+    environment:
+      - 'REACT_APP_SERVER_HOSTNAME=${SERVER_HOSTNAME}'
+      - 'REACT_APP_SERVER_PORT=${SERVER_PORT}'
+      - 'REACT_APP_HTTPS=${HTTPS}'
     depends_on:
       - api
     networks:
       rephrasing_net:
-        ipv4_address: "${CLIENT_HOSTNAME}"
+        ipv4_address: '${CLIENT_HOSTNAME}'
     deploy:
       resources:
         limits:
@@ -56,5 +60,5 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: "${NETWORK_IP}"
-          gateway: "${GATEWAY_IP}"
+        - subnet: '${NETWORK_IP}'
+          gateway: '${GATEWAY_IP}'

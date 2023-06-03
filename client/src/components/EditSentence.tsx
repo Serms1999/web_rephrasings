@@ -1,7 +1,7 @@
-import {ISentence} from "../interfaces/ISentence.ts";
-import {editApiSentence} from "../api/api.ts";
-import SentenceForm from "./SentenceForm.tsx";
-import {EditSentenceProps} from "../interfaces/EditSentenceProps.ts";
+import {ISentence} from "../interfaces/ISentence";
+import {editApiSentence} from "../api/api";
+import SentenceForm from "./SentenceForm";
+import {EditSentenceProps} from "../interfaces/EditSentenceProps";
 
 const EditSentence = ({ currentValues, currentSentences, updateSentences, setShowPopUp }: EditSentenceProps) => {
     const handleEditSentence = async (newSentence: ISentence) => {

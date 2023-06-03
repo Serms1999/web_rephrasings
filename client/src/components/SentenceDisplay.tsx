@@ -1,9 +1,9 @@
-import {ISentenceDisplayProps} from '../interfaces/SentenceDisplayProps.ts';
+import {ISentenceDisplayProps} from '../interfaces/SentenceDisplayProps';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faPencil, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import '../css/SentenceDisplay.css'
-import EditSentence from "./EditSentence.tsx";
-import RemoveSentence from "./RemoveSentence.tsx";
+import EditSentence from "./EditSentence";
+import RemoveSentence from "./RemoveSentence";
 
 const SentenceDisplay = ({num, sentence, setPopUpWindow, switchShowWindow,
                              currentSentences, updateSentences}: ISentenceDisplayProps) => {

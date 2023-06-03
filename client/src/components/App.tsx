@@ -1,9 +1,9 @@
-import '../css/App.css';
-import Home from "../pages/Home.tsx";
-import Sentences from "../pages/Sentences.tsx";
+import "../css/App.css";
+import Home from "../pages/Home";
+import Sentences from "../pages/Sentences";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
-import Exam from "../pages/Exam.tsx";
-import CustomNavbar from "../layout/Navbar.tsx";
+import Exam from "../pages/Exam";
+import CustomNavbar from "../layout/Navbar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {

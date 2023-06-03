@@ -1,6 +1,6 @@
-import {ISentenceFormProps} from "../interfaces/SentenceFormProps.ts";
+import {ISentenceFormProps} from "../interfaces/SentenceFormProps";
 import "../css/SentenceForm.css";
-import {ISentence} from "../interfaces/ISentence.ts";
+import {ISentence} from "../interfaces/ISentence";
 import {MutableRefObject, useRef} from "react";
 
 const SentenceForm = ({ currentValues, setShowPopUp, handler }: ISentenceFormProps) => {

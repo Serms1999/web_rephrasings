@@ -1,10 +1,10 @@
-import ExamText from "./ExamText.tsx";
-import {IExamSentenceProps} from "../interfaces/ExamSentenceProps.ts";
-import ExamButtons from "./ExamButtons.tsx";
-import ExamLeftButton from "./ExamLeftButton.tsx";
-import ExamRightButton from "./ExamRightButton.tsx";
+import ExamText from "./ExamText";
+import {IExamSentenceProps} from "../interfaces/ExamSentenceProps";
+import ExamButtons from "./ExamButtons";
+import ExamLeftButton from "./ExamLeftButton";
+import ExamRightButton from "./ExamRightButton";
 import {MutableRefObject, useEffect, useRef, useState} from "react";
-import {EXAM_PAGES} from "../pages/Exam.tsx";
+import {EXAM_PAGES} from "../pages/Exam";
 import {faEye} from "@fortawesome/free-solid-svg-icons";
 import "../css/ExamSentences.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -40,7 +40,7 @@ const ExamSentences = ({ sentences, userAnswers, setUserAnswers, updatePage }: I
     const handleFinish = () => {
         const totalTime = new Date(Date.now() - start);
         const time = totalTime.toLocaleTimeString('es-ES', {minute: "2-digit", second: "2-digit"});
-        if (confirm(`Are you sure to finish the test?\nTime: ${time}`)) {
+        if (window.confirm(`Are you sure to finish the test?\nTime: ${time}`)) {
             answerInput.current.value = "";
             updatePage(EXAM_PAGES.END);
         }

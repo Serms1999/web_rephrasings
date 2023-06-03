@@ -1,4 +1,4 @@
-import {ISentence} from "./ISentence.ts";
+import {ISentence} from "./ISentence";
 
 export interface IResults {
     numCorrect: number,

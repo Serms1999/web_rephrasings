@@ -2,10 +2,10 @@ import "../css/SentencesRecap.css"
 import {useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faXmark} from "@fortawesome/free-solid-svg-icons";
-import ExamLeftButton from "./ExamLeftButton.tsx";
-import ExamRightButton from "./ExamRightButton.tsx";
-import {COLORS} from "./ExamEnd.tsx";
-import {ISentencesRecapProps} from "../interfaces/SentencesRecapProps.ts";
+import ExamLeftButton from "./ExamLeftButton";
+import ExamRightButton from "./ExamRightButton";
+import {COLORS} from "./ExamEnd";
+import {ISentencesRecapProps} from "../interfaces/SentencesRecapProps";
 
 const SentencesRecap = ({sentences, userAnswers, results, setShowWindow}: ISentencesRecapProps) => {
     const [sentenceIndex, updateSentence] = useState(0);

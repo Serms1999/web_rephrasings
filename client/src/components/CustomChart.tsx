@@ -1,8 +1,8 @@
 import {useCallback, useState} from "react";
 import {Cell, Pie, PieChart, Sector} from "recharts";
-import {ICustomChartProps} from "../interfaces/CustomChartProps.ts";
+import {ICustomChartProps} from "../interfaces/CustomChartProps";
 import "../css/CustomChart.css";
-import {COLORS} from "./ExamEnd.tsx";
+import {COLORS} from "./ExamEnd";
 
 const renderActiveShape = (props: any) => {
     const RADIAN = Math.PI / 180;
