@@ -43,11 +43,13 @@ const ManageData = ({ currentSentences, updateSentences, setShowPopUp }: IManage
     }
 
     const handleErase = async () => {
-        const databaseErased = await eraseApiDatabase();
-        if (databaseErased) {
-            updateSentences([]);
+        if (window.confirm('Are you sure to delete all the data on the database?')) {
+            const databaseErased = await eraseApiDatabase();
+            if (databaseErased) {
+                updateSentences([]);
+            }
+            setShowPopUp(false);
         }
-        setShowPopUp(false);
     }
 
     return (

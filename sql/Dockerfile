@@ -6,4 +6,4 @@ MAINTAINER Sergio Marin Sanchez "serms1999@gmail.com"
 WORKDIR /db
 COPY setup.sql /docker-entrypoint-initdb.d
 
-EXPOSE 3306
+EXPOSE $DB_PORT
