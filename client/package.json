@@ -2,6 +2,7 @@
   "name": "client",
   "version": "2.0.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
@@ -32,7 +33,7 @@
     "build": "BUILD_PATH='./dist' react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "serve -s dist -p $CLIENT_PORT"
+    "start": "serve -n -s dist -p $CLIENT_PORT"
   },
   "eslintConfig": {
     "extends": [
