@@ -21,6 +21,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
+    "react-inject-env": "^2.1.0",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
     "recharts": "^2.6.2",
@@ -33,7 +34,9 @@
     "build": "BUILD_PATH='./dist' react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "serve -n -s dist -p $CLIENT_PORT"
+    "inject-env": "REACT_APP_SERVER_HOSTNAME=$SERVER_HOSTNAME REACT_APP_SERVER_PORT=$SERVER_PORT REACT_APP_HTTPS=$HTTPS npx react-inject-env set -d ./dist",
+    "start": "serve -n -s dist -p $CLIENT_PORT",
+    "start:env": "npm run inject-env && npm run start"
   },
   "eslintConfig": {
     "extends": [

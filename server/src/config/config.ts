@@ -19,7 +19,7 @@ const DB = {
 
 const SERVER_HOSTNAME: string = process.env.SERVER_HOSTNAME ?? 'localhost';
 const SERVER_PORT = process.env.SERVER_PORT ?? 8000;
-const HTTPS = process.env.HTTPS === 'true';
+const HTTPS = process.env.HTTPS.toLowerCase() === 'true';
 
 const SERVER = {
     hostname: SERVER_HOSTNAME,
